@@ -1,4 +1,37 @@
 .App {
-  text-align: center;
+	text-align: center;
 }
 
+.card-wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.card {
+	padding: 1.5% 3% 3% 3%;
+	width: 20vw;
+	margin: 2%;
+	background-color: rgba(0, 0, 0, 0) !important;
+}
+
+#new-cases {
+	border: 3px solid darkorange;
+}
+#new-cases .card-footer {
+	border-top: 2px solid rgba(255, 140, 0, 0.4);
+	font-weight: bold;
+}
+#new-deaths {
+	border: 3px solid red;
+}
+#new-deaths .card-footer {
+	border-top: 2px solid rgba(255, 0, 0, 0.4);
+	font-weight: bold;
+}
+#new-recovered {
+	border: 3px solid limegreen;
+}
+#new-recovered .card-footer {
+	border-top: 2px solid rgba(50, 205, 50, 0.4);
+	font-weight: bold;
+}
