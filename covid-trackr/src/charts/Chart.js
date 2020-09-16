@@ -1,12 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import { Card, Button, CardTitle, CardText, CardFooter } from "reactstrap";
+import { Map as LeafMap, TileLayer } from "react-leaflet";
+
 
 function Chart({ global, countries }) {
 	// console.log(countries[179]);
 	// countries.map(country => {
 	//     console.log(`${country.Country}, Total Deaths: ${country.TotalDeaths}` )
 	// })
-	console.log(global);
+	const [position, setPosition] = useState({ lat: 51.505, lng: -0.09 });
+	const [zoom, setZoom] = useState(5);
+
+	const center = [position.lat, position.lng]
+
+	console.log(center);
 	return (
 		<section>
 			<div class="card-wrapper">
@@ -37,6 +44,14 @@ function Chart({ global, countries }) {
 					</CardText>
 					<CardFooter>Total: {global.TotalRecovered}</CardFooter>
 				</Card>
+			</div>
+			<div id="map">
+				<LeafMap center={center} zoom={zoom}>
+					<TileLayer
+						url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+						attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+					/>
+				</LeafMap>
 			</div>
 		</section>
 	);

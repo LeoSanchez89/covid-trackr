@@ -13,25 +13,36 @@
 	margin: 2%;
 	background-color: rgba(0, 0, 0, 0) !important;
 }
-
+.card-footer {
+	font-weight: bold;
+	background-color: rgba(0, 0, 0, 0) !important;
+	padding: 10% 0 0 0 !important;
+}
 #new-cases {
 	border: 3px solid darkorange;
 }
 #new-cases .card-footer {
 	border-top: 2px solid rgba(255, 140, 0, 0.4);
-	font-weight: bold;
 }
 #new-deaths {
 	border: 3px solid red;
 }
 #new-deaths .card-footer {
 	border-top: 2px solid rgba(255, 0, 0, 0.4);
-	font-weight: bold;
 }
 #new-recovered {
 	border: 3px solid limegreen;
 }
 #new-recovered .card-footer {
 	border-top: 2px solid rgba(50, 205, 50, 0.4);
-	font-weight: bold;
+}
+
+#map {
+	height: 50vh;
+	width:40vw;
+	/* background-color: lightgray; */
+	padding: 1rem;
+	border-radius: 20px;
+	margin-top: 16px;
+	box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
 }

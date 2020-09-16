@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import "leaflet/dist/leaflet.css";
 import Chart from "./charts/Chart";
 import axios from "axios";
 import ParticlesBg from "particles-bg";
