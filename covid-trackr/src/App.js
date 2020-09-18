@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import "leaflet/dist/leaflet.css";
 import Chart from "./charts/Chart";
+import LineGraph from "./charts/LineGraph";
 import axios from "axios";
 import ParticlesBg from "particles-bg";
 import Icon from "./charts/icon";
@@ -17,7 +18,7 @@ function App() {
 		life:  [1.5,5],
 		v: 1,
 		tha: [-40, 40],
-		alpha: [.7, .1],
+		alpha: [.8, .2],
 		scale: [.03, .07],
 		body: Icon,
 		position: "all",
@@ -41,9 +42,10 @@ function App() {
 
 	return (
 		<div className="App">
-			{/* <ParticlesBg type="custom" config={config} bg={true} /> */}
+			<ParticlesBg type="custom" config={config} bg={true} />
 			<h1>Daily Covid Trackr</h1>
 			<Chart global={global} countries={countries} />
+			<LineGraph countries={countries}></LineGraph>
 		</div>
 	);
 }
