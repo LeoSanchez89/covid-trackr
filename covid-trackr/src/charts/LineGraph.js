@@ -11,15 +11,18 @@ import {
 defaults.global.defaultFontStyle = "bold";
 defaults.global.defaultFontColor = "white";
 
-function LineGraph({ countries }) {
+function LineGraph({ countries, country, setCountry }) {
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const toggle = () => setDropdownOpen((prevState) => !prevState);
 
-	const [country, setCountry] = useState("United States of America");
+	// console.log(countries);
+
+	// const [country, setCountry] = useState("United States of America");
 	const [countryData, setCountryData] = useState();
 
 	useEffect(() => {
-		axios
+		if (country !== "Global") {
+			axios
 			.get(`https://api.covid19api.com/total/dayone/country/${country}`)
 			.then((res) => {
 				// console.log("response", res.data);
@@ -28,6 +31,7 @@ function LineGraph({ countries }) {
 			.catch((err) => {
 				console.log(err);
 			});
+		}
 	}, [country]);
 
 	const convertMonth = {
@@ -40,9 +44,9 @@ function LineGraph({ countries }) {
 		"07": "Jul",
 		"08": "Aug",
 		"09": "Sep",
-		10: "Oct",
-		11: "Nov",
-		12: "Dec",
+		"10": "Oct",
+		"11": "Nov",
+		"12": "Dec",
 	};
 
 	// Creates array for selected country from 1st of every Month with cases
@@ -50,11 +54,11 @@ function LineGraph({ countries }) {
 
 	countryData &&
 		countryData.map((item) => {
-			if (item.Date.slice(8, 10) === "01") {
+			if (item.Date.slice(8, 10) === "28"){
 				history.push(item);
-			}
+			} 
 		});
-	console.log(history);
+	
 
 	// Creates Data for selected Country to fill in Graph
 	const graphMonth = [];

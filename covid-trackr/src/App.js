@@ -10,6 +10,8 @@ import Icon from "./charts/icon";
 function App() {
 	const [global, setGlobal] = useState({});
 	const [countries, setCountries] = useState([]);
+	const [country, setCountry] = useState("Global");
+
 
 	let config = {
 		num: [4, 7],
@@ -40,12 +42,14 @@ function App() {
 			});
 	}, []);
 
+
+
 	return (
 		<div className="App">
-			<ParticlesBg type="custom" config={config} bg={true} />
+			{/* <ParticlesBg type="custom" config={config} bg={true} /> */}
 			<h1>Daily Covid Trackr</h1>
-			<Chart global={global} countries={countries} />
-			<LineGraph countries={countries}></LineGraph>
+			<Chart global={global} countries={countries} country={country} />
+			<LineGraph countries={countries} country={country} setCountry={setCountry}></LineGraph>
 		</div>
 	);
 }
