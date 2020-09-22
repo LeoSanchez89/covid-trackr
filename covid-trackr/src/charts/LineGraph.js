@@ -15,11 +15,14 @@ function LineGraph({ countries, country, setCountry }) {
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const toggle = () => setDropdownOpen((prevState) => !prevState);
 
+	// console.log(countries);
+
 	// const [country, setCountry] = useState("United States of America");
 	const [countryData, setCountryData] = useState();
 
 	useEffect(() => {
-		axios
+		if (country !== "Global") {
+			axios
 			.get(`https://api.covid19api.com/total/dayone/country/${country}`)
 			.then((res) => {
 				// console.log("response", res.data);
@@ -28,6 +31,7 @@ function LineGraph({ countries, country, setCountry }) {
 			.catch((err) => {
 				console.log(err);
 			});
+		}
 	}, [country]);
 
 	const convertMonth = {
@@ -50,9 +54,9 @@ function LineGraph({ countries, country, setCountry }) {
 
 	countryData &&
 		countryData.map((item) => {
-			if (item.Date.slice(8, 10) === "01"){
+			if (item.Date.slice(8, 10) === "28"){
 				history.push(item);
-			}
+			} 
 		});
 	
 

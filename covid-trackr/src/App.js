@@ -10,7 +10,7 @@ import Icon from "./charts/icon";
 function App() {
 	const [global, setGlobal] = useState({});
 	const [countries, setCountries] = useState([]);
-	const [country, setCountry] = useState("United States of America");
+	const [country, setCountry] = useState("Global");
 
 
 	let config = {
@@ -41,6 +41,8 @@ function App() {
 				console.log(err);
 			});
 	}, []);
+
+
 
 	return (
 		<div className="App">

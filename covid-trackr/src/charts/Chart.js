@@ -9,7 +9,7 @@ function Chart({ global, countries, country }) {
 	const [position, setPosition] = useState({ lat: 51.505, lng: -0.09 });
 	const [zoom, setZoom] = useState(5);
 	
-	const cardData = {
+	const initialData = {
 		NewConfirmed: global.NewConfirmed,
 		TotalConfirmed: global.TotalConfirmed,
 		NewDeaths: global.NewDeaths,
@@ -19,20 +19,17 @@ function Chart({ global, countries, country }) {
 	};
 	
 	const center = [position.lat, position.lng]
-	// const [cardData, setCardData] = useState(initialData);
+	const [cardData, setCardData] = useState();
 
-	// useEffect(() => {
-	// 	countries.map(item => {
-	// 		if (item.Country === country) {
-	// 			cardData.NewConfirmed = item.NewConfirmed;
-	// 			cardData.TotalConfirmed = item.TotalConfirmed;
-	// 			cardData.NewDeaths = item.NewDeaths;
-	// 			cardData.TotalDeaths = item.TotalDeaths;
-	// 			cardData.NewRecovered = item.NewRecovered;
-	// 			cardData.TotalRecovered = item.TotalRecovered;
-	// 		}
-	// 	});
-	// }, [country]);
+	// console.log(countries)
+
+	useEffect(() => {
+		countries.map(item => {
+			if (item.Country === country) {
+				setCardData(item);
+			}
+		});
+	}, [country]);
 
 	// console.log(country, cardData)
 	
@@ -44,27 +41,39 @@ function Chart({ global, countries, country }) {
 						<h2>New Cases</h2>
 					</CardTitle>
 					<CardText>
-						<h3 style={{ color: "darkorange" }}>+{cardData.NewConfirmed}</h3>
+						<h3 style={{ color: "darkorange" }}>
+							+{cardData ? cardData.NewConfirmed : global.NewConfirmed}
+						</h3>
 					</CardText>
-					<CardFooter>Total: {cardData.TotalConfirmed}</CardFooter>
+					<CardFooter>
+						Total: {cardData ? cardData.TotalConfirmed : global.TotalConfirmed}
+					</CardFooter>
 				</Card>
 				<Card className="cases-card" id="new-deaths">
 					<CardTitle>
 						<h2>Deaths</h2>
 					</CardTitle>
 					<CardText>
-						<h3 style={{ color: "red" }}>+{cardData.NewDeaths}</h3>
+						<h3 style={{ color: "red" }}>
+							+{cardData ? cardData.NewDeaths : global.NewDeaths}
+						</h3>
 					</CardText>
-					<CardFooter>Total: {cardData.TotalDeaths}</CardFooter>
+					<CardFooter>
+						Total: {cardData ? cardData.TotalDeaths : global.TotalDeaths}
+					</CardFooter>
 				</Card>
 				<Card className="cases-card" id="new-recovered">
 					<CardTitle>
 						<h2>Recovered</h2>
 					</CardTitle>
 					<CardText>
-						<h3 style={{ color: "limegreen" }}>+{cardData.NewRecovered}</h3>
+						<h3 style={{ color: "limegreen" }}>
+							+{cardData ? cardData.NewRecovered : global.NewRecovered}
+						</h3>
 					</CardText>
-					<CardFooter>Total: {cardData.TotalRecovered}</CardFooter>
+					<CardFooter>
+						Total: {cardData ? cardData.TotalRecovered : global.TotalRecovered}
+					</CardFooter>
 				</Card>
 			</div>
 			{/* <div id="map">
