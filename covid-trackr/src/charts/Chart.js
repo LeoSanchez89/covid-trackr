@@ -9,19 +9,17 @@ function Chart({ global, countries, country }) {
 	const [position, setPosition] = useState({ lat: 51.505, lng: -0.09 });
 	const [zoom, setZoom] = useState(5);
 	
-	const initialData = {
-		NewConfirmed: global.NewConfirmed,
-		TotalConfirmed: global.TotalConfirmed,
-		NewDeaths: global.NewDeaths,
-		TotalDeaths: global.TotalDeaths,
-		NewRecovered: global.NewRecovered,
-		TotalRecovered: global.TotalRecovered,
-	};
+	// const initialData = {
+	// 	NewConfirmed: global.NewConfirmed,
+	// 	TotalConfirmed: global.TotalConfirmed,
+	// 	NewDeaths: global.NewDeaths,
+	// 	TotalDeaths: global.TotalDeaths,
+	// 	NewRecovered: global.NewRecovered,
+	// 	TotalRecovered: global.TotalRecovered,
+	// };
 	
 	const center = [position.lat, position.lng]
 	const [cardData, setCardData] = useState();
-
-	// console.log(countries)
 
 	useEffect(() => {
 		countries.map(item => {
@@ -31,8 +29,6 @@ function Chart({ global, countries, country }) {
 		});
 	}, [country]);
 
-	// console.log(country, cardData)
-	
 	return (
 		<section>
 			<div className="card-wrapper">
