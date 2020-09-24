@@ -14,10 +14,6 @@ defaults.global.defaultFontColor = "white";
 function LineGraph({ countries, country, setCountry }) {
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const toggle = () => setDropdownOpen((prevState) => !prevState);
-
-	// console.log(countries);
-
-	// const [country, setCountry] = useState("United States of America");
 	const [countryData, setCountryData] = useState();
 
 	useEffect(() => {
@@ -54,7 +50,7 @@ function LineGraph({ countries, country, setCountry }) {
 
 	countryData &&
 		countryData.map((item) => {
-			if (item.Date.slice(8, 10) === "28"){
+			if (item.Date.slice(8, 10) === "01"){
 				history.push(item);
 			} 
 		});
